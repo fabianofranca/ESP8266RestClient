@@ -13,6 +13,7 @@ RestClient::RestClient(const char* _host){
   port = 80;
   num_headers = 0;
   contentType = "application/x-www-form-urlencoded";	// default
+  timeout = 5000;
   use_https = false;
   fingerprint = "";
 }
@@ -22,6 +23,7 @@ RestClient::RestClient(const char* _host, int _port){
   port = _port;
   num_headers = 0;
   contentType = "application/x-www-form-urlencoded";	// default
+  timeout = 5000;
   use_https = false;
   fingerprint = "";
 }
@@ -110,6 +112,10 @@ void RestClient::setContentType(const char* contentTypeValue){
   contentType = contentTypeValue;
 }
 
+void RestClient::setTimeout(unsigned int timeoutMilliseconds) {
+    timeout = timeoutMilliseconds;
+}
+
 void RestClient::setSecureConnection(bool secureConn){
   use_https = secureConn;
 }
@@ -144,6 +150,8 @@ int RestClient::request(const char* method, const char* path,
 
   } else {
     //Normal connection
+    client.setTimeout(timeout);
+
     if(!client.connect(host, port)){
       HTTP_DEBUG_PRINT("HTTP Connection failed\n");
       return 0;
