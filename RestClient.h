@@ -18,6 +18,9 @@ class RestClient {
     void setHeader(const char*);
     // Set Content-Type Header
     void setContentType(const char*);
+    // Set Request timeout
+    void setTimeout(unsigned int);
+
 
     //Set to use a secure connection
     void setSecureConnection(bool secureConn);
@@ -61,4 +64,5 @@ class RestClient {
     bool use_https;
     const char* fingerprint;
 	const char* contentType;
+    unsigned int timeout;
 };

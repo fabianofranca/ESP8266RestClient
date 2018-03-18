@@ -112,6 +112,14 @@ client.setHeader("X-Test-Header1: one");
 client.setContentType("application/json");
 ```
 
+### setTimeout(unsigned int timeoutMilliseconds)
+
+Available for non-secure connections as currently WiFiClientSecure doesn't implement `setTimeout`.
+
+```
+client.setTimeout(1000)
+```
+
 ## Full Example
 
 I test every way of calling the library (against a public heroku app)[https://github.com/csquared/arduino-http-test].
