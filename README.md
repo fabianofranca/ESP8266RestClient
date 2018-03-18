@@ -98,6 +98,20 @@ String response = "";
 int statusCode = client.del("/", &response);
 ```
 
+## Request Configuration
+
+### setHeader(const char* header)
+
+```
+client.setHeader("X-Test-Header1: one");
+```
+
+### setContentType(const char* contentTypeValue)
+
+```
+client.setContentType("application/json");
+```
+
 ## Full Example
 
 I test every way of calling the library (against a public heroku app)[https://github.com/csquared/arduino-http-test].
